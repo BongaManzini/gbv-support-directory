@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>South African GBV Crisis Support & Safe Shelter Directory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-purple-500/20 selection:text-purple-400">
+
+  <!-- Quick Exit Floating Top Bar (Sticky) -->
+  <div class="sticky top-0 z-50 bg-rose-600 text-white px-4 py-2.5 shadow-2xl flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <i data-lucide="shield-alert" class="w-4 h-4 text-white animate-pulse"></i>
+      <span class="text-xs font-bold font-mono">NEED TO LEAVE QUICKLY? Press ESC key or click:</span>
+    </div>
+    <button 
+      onclick="quickExit()" 
+      class="px-4 py-1.5 rounded-lg bg-white text-rose-700 hover:bg-rose-50 font-black text-xs uppercase font-mono shadow flex items-center gap-1.5 transition-all"
+    >
+      <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+      <span>⚡ QUICK EXIT (ESC)</span>
+    </button>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <!-- Header -->
+    <header class="border-b border-slate-800 pb-6 mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-1 rounded-full text-xs font-mono font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+            Privacy-by-Design Crisis Informatics
+          </span>
+          <span class="text-xs font-mono text-slate-400 hidden sm:inline">SA Informatics Master Portfolio</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white flex items-center gap-3">
+          <span>💜 South Africa GBV Support & Shelter Directory</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base mt-1 max-w-2xl font-light">
+          Confidential, encrypted emergency resource directory for survivors of Gender-Based Violence (GBV). Provides instant access to accredited shelters, Thuthuzela Care Centres (TCCs), and legal protection orders without leaving a digital footprint.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="toggleDisguise()" class="px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white text-xs font-mono flex items-center gap-1.5 transition-all">
+          <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
+          <span>Disguise Tab</span>
+        </button>
+        <a href="https://github.com/BongaManzini/gbv-support-directory" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 text-xs font-mono flex items-center gap-2 transition-all">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Emergency Toll-Free Lines (Always Visible) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mb-8">
+      
+      <a href="tel:0800428428" class="bg-gradient-to-br from-purple-950/60 to-slate-900 border border-purple-500/40 rounded-2xl p-4 hover:border-purple-400 transition-all block group">
+        <div class="flex items-center justify-between text-xs font-mono text-purple-300 mb-1">
+          <span>National GBV Command Centre</span>
+          <i data-lucide="phone-call" class="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform"></i>
+        </div>
+        <span class="text-2xl font-black text-white font-mono block">0800 428 428</span>
+        <span class="text-[11px] text-purple-300/80 block mt-0.5">Toll-free 24/7 • Or *120*7867# (Free)</span>
+      </a>
+
+      <a href="tel:10111" class="bg-gradient-to-br from-rose-950/60 to-slate-900 border border-rose-500/40 rounded-2xl p-4 hover:border-rose-400 transition-all block group">
+        <div class="flex items-center justify-between text-xs font-mono text-rose-300 mb-1">
+          <span>SAPS Emergency Response</span>
+          <i data-lucide="shield" class="w-4 h-4 text-rose-400 group-hover:scale-110 transition-transform"></i>
+        </div>
+        <span class="text-2xl font-black text-white font-mono block">10111</span>
+        <span class="text-[11px] text-rose-300/80 block mt-0.5">Immediate police dispatch</span>
+      </a>
+
+      <a href="tel:0800150150" class="bg-gradient-to-br from-cyan-950/60 to-slate-900 border border-cyan-500/40 rounded-2xl p-4 hover:border-cyan-400 transition-all block group">
+        <div class="flex items-center justify-between text-xs font-mono text-cyan-300 mb-1">
+          <span>TEARS Foundation (Free USSD)</span>
+          <i data-lucide="heart-handshake" class="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+        </div>
+        <span class="text-2xl font-black text-white font-mono block">*134*7355#</span>
+        <span class="text-[11px] text-cyan-300/80 block mt-0.5">Dial from any phone (Zero Airtime)</span>
+      </a>
+
+      <a href="tel:116" class="bg-gradient-to-br from-amber-950/60 to-slate-900 border border-amber-500/40 rounded-2xl p-4 hover:border-amber-400 transition-all block group">
+        <div class="flex items-center justify-between text-xs font-mono text-amber-300 mb-1">
+          <span>Childline South Africa</span>
+          <i data-lucide="baby" class="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform"></i>
+        </div>
+        <span class="text-2xl font-black text-white font-mono block">116</span>
+        <span class="text-[11px] text-amber-300/80 block mt-0.5">For minors and children at risk</span>
+      </a>
+
+    </div>
+
+    <!-- Province Filter Tabs -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 mb-6">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="map-pin" class="w-4 h-4 text-purple-400"></i>
+        <span class="text-xs font-mono uppercase text-slate-300 font-semibold">Select Province for Shelters & Thuthuzela Centres:</span>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        <button onclick="setProvince('ALL')" id="tab-all" class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-purple-500 text-slate-950 transition-all">
+          All South Africa
+        </button>
+        <button onclick="setProvince('GAUTENG')" id="tab-gauteng" class="px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800 text-slate-300 hover:text-white transition-all">
+          Gauteng
+        </button>
+        <button onclick="setProvince('WESTERN_CAPE')" id="tab-western_cape" class="px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800 text-slate-300 hover:text-white transition-all">
+          Western Cape
+        </button>
+        <button onclick="setProvince('KZN')" id="tab-kzn" class="px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800 text-slate-300 hover:text-white transition-all">
+          KwaZulu-Natal
+        </button>
+        <button onclick="setProvince('EASTERN_CAPE')" id="tab-eastern_cape" class="px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800 text-slate-300 hover:text-white transition-all">
+          Eastern Cape
+        </button>
+        <button onclick="setProvince('LIMPOPO')" id="tab-limpopo" class="px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800 text-slate-300 hover:text-white transition-all">
+          Limpopo & Mpumalanga
+        </button>
+      </div>
+    </div>
+
+    <!-- Resources & Shelters Grid -->
+    <div id="shelters-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <!-- Populated dynamically -->
+    </div>
+
+    <!-- Safety Planning Checklist -->
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+      <div class="flex items-center gap-2">
+        <i data-lucide="check-square" class="w-5 h-5 text-purple-400"></i>
+        <h3 class="text-lg font-bold text-white">Emergency Safety Planning (Before Leaving)</h3>
+      </div>
+      <p class="text-xs text-slate-400 font-light leading-relaxed">
+        If you are planning to leave an unsafe environment, keeping critical essentials packed in a safe place with a trusted friend can protect your future independence:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+        <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-2xl">
+          <span class="text-purple-400 font-bold block mb-1">1. Essential Documents</span>
+          <p class="text-slate-300 font-light text-[11px]">ID Books, Birth Certificates, Clinic immunization cards, SASSA cards, Passports, Bank cards.</p>
+        </div>
+        <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-2xl">
+          <span class="text-purple-400 font-bold block mb-1">2. Medication & Essentials</span>
+          <p class="text-slate-300 font-light text-[11px]">Chronic prescription meds, spare phone charger, house keys, emergency cash.</p>
+        </div>
+        <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-2xl">
+          <span class="text-purple-400 font-bold block mb-1">3. Safe Transportation</span>
+          <p class="text-slate-300 font-light text-[11px]">Identify the nearest police station or Thuthuzela Care Centre (TCC) which provide 24/7 guarded shelter.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-mono gap-4">
+      <p>© Bonga Manzini • BSc Informatics (UNISA) • Social Impact Informatics</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/BongaManzini/gbv-support-directory" target="_blank" class="hover:text-purple-400 transition-colors">GitHub Repository</a>
+        <span>•</span>
+        <a href="https://bongamanzini.github.io/portfolio/" target="_blank" class="hover:text-purple-400 transition-colors">Portfolio</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const SHELTERS = [
+      {
+        name: 'Thuthuzela Care Centre (Chris Hani Baragwanath)',
+        province: 'GAUTENG',
+        city: 'Soweto, Johannesburg',
+        type: 'Thuthuzela Care Centre (TCC)',
+        phone: '011 938 1074',
+        services: '24/7 Medical Care, Forensic Examination, Counseling, Police Reporting',
+        address: 'Chris Hani Baragwanath Academic Hospital, Soweto'
+      },
+      {
+        name: 'POWA (People Opposing Women Abuse)',
+        province: 'GAUTENG',
+        city: 'Berea, Johannesburg',
+        type: 'Safe Shelter & Legal Aid',
+        phone: '011 642 4345',
+        services: 'Emergency Shelter, Free Legal Advice, Court Accompaniment, Counseling',
+        address: 'Berea, Johannesburg (Confidential Shelter Location)'
+      },
+      {
+        name: 'Saartjie Baartman Centre for Women and Children',
+        province: 'WESTERN_CAPE',
+        city: 'Athlone, Cape Town',
+        type: 'Comprehensive Shelter & Support',
+        phone: '021 633 5287',
+        services: 'Emergency Accommodation, Childcare, Substance Abuse Support, Legal Help',
+        address: 'Klipfontein Road, Athlone, Cape Town'
+      },
+      {
+        name: 'Thuthuzela Care Centre (Karl Bremer Hospital)',
+        province: 'WESTERN_CAPE',
+        city: 'Bellville, Cape Town',
+        type: 'Thuthuzela Care Centre (TCC)',
+        phone: '021 918 1321',
+        services: 'Post-Exposure Prophylaxis (PEP), Trauma Support, Medical Forensics',
+        address: 'Karl Bremer Hospital, Bellville'
+      },
+      {
+        name: 'Open Door Crisis Care Centre',
+        province: 'KZN',
+        city: 'Pinetown, Durban',
+        type: 'Crisis Shelter & Family Support',
+        phone: '031 709 2679',
+        services: 'Temporary Shelter, Crisis Intervention, Police Liaison, Child Protection',
+        address: 'Pinetown, Durban'
+      },
+      {
+        name: 'Thuthuzela Care Centre (RK Khan Hospital)',
+        province: 'KZN',
+        city: 'Chatsworth, Durban',
+        type: 'Thuthuzela Care Centre (TCC)',
+        phone: '031 459 6239',
+        services: 'Immediate Medical Assistance, Dedicated GBV Police Officers, Psychosocial Care',
+        address: 'RK Khan Hospital, Chatsworth'
+      },
+      {
+        name: 'Masimanyane Women\'s Rights International',
+        province: 'EASTERN_CAPE',
+        city: 'East London',
+        type: 'Support Centre & Legal Advocacy',
+        phone: '043 743 9169',
+        services: 'Protection Order Assistance, Safe Shelter Referrals, Counseling',
+        address: 'East London Central'
+      },
+      {
+        name: 'Thuthuzela Care Centre (Polokwane Hospital)',
+        province: 'LIMPOPO',
+        city: 'Polokwane',
+        type: 'Thuthuzela Care Centre (TCC)',
+        phone: '015 287 5000',
+        services: 'Medical Assessment, Legal Documentation, Social Worker Support',
+        address: 'Hospital Street, Polokwane'
+      }
+    ];
+
+    let currentProvince = 'ALL';
+
+    function renderShelters() {
+      const container = document.getElementById('shelters-grid');
+      const filtered = currentProvince === 'ALL' 
+        ? SHELTERS 
+        : SHELTERS.filter(s => s.province === currentProvince);
+
+      container.innerHTML = filtered.map(s => `
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 flex flex-col justify-between transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/30">
+                ${s.type}
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">${s.city}</span>
+            </div>
+            <h4 class="text-base font-bold text-white mb-1">${s.name}</h4>
+            <p class="text-xs text-slate-300 font-light mb-3 leading-relaxed">${s.services}</p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">${s.address}</span>
+            <a href="tel:${s.phone.replace(/\\s+/g, '')}" class="px-3 py-1.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-slate-950 font-bold font-mono text-xs flex items-center gap-1.5 transition-all">
+              <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+              <span>${s.phone}</span>
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function setProvince(prov) {
+      currentProvince = prov;
+
+      ['all', 'gauteng', 'western_cape', 'kzn', 'eastern_cape', 'limpopo'].forEach(p => {
+        const btn = document.getElementById(`tab-${p}`);
+        if (p.toUpperCase() === prov) {
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-purple-500 text-slate-950 transition-all';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-800 text-slate-300 hover:text-white transition-all';
+        }
+      });
+
+      renderShelters();
+    }
+
+    // Quick Exit: Replaces history state and navigates to Google Weather
+    function quickExit() {
+      try {
+        localStorage.clear();
+        sessionStorage.clear();
+      } catch (e) {}
+      window.location.replace('https://www.google.com/search?q=south+africa+weather+forecast');
+    }
+
+    // Hotkey listener for ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        quickExit();
+      }
+    });
+
+    // Tab disguise
+    let disguised = false;
+    function toggleDisguise() {
+      disguised = !disguised;
+      if (disguised) {
+        document.title = '☀️ South Africa Weather & News Portal';
+        alert('Disguise mode enabled: Tab title set to "South Africa Weather & News Portal". Press ESC anytime to instantly leave.');
+      } else {
+        document.title = 'South African GBV Crisis Support & Safe Shelter Directory';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderShelters();
+    });
+  </script>
+</body>
+</html>
