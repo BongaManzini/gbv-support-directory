@@ -1,4 +1,4 @@
-# 💜 South Africa GBV Support & Safe Shelter Directory
+# South Africa GBV Support & Safe Shelter Directory
 
 > **Live Application**: [https://bongamanzini.github.io/gbv-support-directory/](https://bongamanzini.github.io/gbv-support-directory/)
 
@@ -6,17 +6,17 @@ A privacy-by-design crisis support and safe shelter directory connecting survivo
 
 ---
 
-## 🎯 The Informatics & Privacy-by-Design Angle
+## The Informatics & Privacy-by-Design Angle
 
 - **The Problem**: Domestic abuse survivors seeking help on phones or shared household computers risk severe physical retaliation if their browsing history or cached session is discovered by an abuser.
 - **The Informatics Solution**:
-  - **⚡ Quick Exit Button & Hotkey (`ESC`)**: Instantly purges `localStorage`/`sessionStorage` and triggers `window.location.replace()` to redirect immediately to Google Weather, erasing the back-button navigation stack.
+  - ** Quick Exit Button & Hotkey (`ESC`)**: Instantly purges `localStorage`/`sessionStorage` and triggers `window.location.replace()` to redirect immediately to Google Weather, erasing the back-button navigation stack.
   - **Disguised Tab Mode**: One-click toggles browser tab metadata, title, and favicon to *"South Africa Weather & News"* for discreet browsing in unsafe rooms.
   - **Zero Tracking**: Zero analytics cookies, zero third-party telemetry, zero server-side IP logging.
 
 ---
 
-## 🛠️ Directory Resources
+## ️ Directory Resources
 
 - **Emergency Toll-Free Lines**:
   - National GBV Command Centre: `0800 428 428` / Zero-Data USSD `*120*7867#`
@@ -28,7 +28,7 @@ A privacy-by-design crisis support and safe shelter directory connecting survivo
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Frontend**: HTML5, Vanilla JavaScript (ESNext)
 - **Styling**: Tailwind CSS
@@ -37,8 +37,8 @@ A privacy-by-design crisis support and safe shelter directory connecting survivo
 
 ---
 
-## 👨‍💻 Author
+## ‍ Author
 
-**Bonga Manzini**  
-BSc Informatics – University of South Africa (UNISA)  
+**Bonga Manzini** 
+BSc Informatics – University of South Africa (UNISA) 
 Portfolio: [https://bongamanzini.github.io/portfolio/](https://bongamanzini.github.io/portfolio/)
